@@ -1,8 +1,43 @@
 package com.cs.datastructure.tree.bst;
 
 
+import java.util.Iterator;
+import java.util.Stack;
 
-public class BinarySearchTree<T> {
+public class BinarySearchTree<T> implements Iterator<T>, Iterable<T> {
+
+    Stack<BstNode<T>> stack;
+
+    @Override
+    public boolean hasNext() {
+        return !stack.isEmpty();
+    }
+
+    @Override
+    public T next() {
+
+        BstNode<T> node = stack.pop();
+
+        if (node.right != null) {
+            populateIteratorStack(node.right);
+        }
+
+        return node.value;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        stack = new Stack<>();
+        populateIteratorStack(root);
+        return this;
+    }
+
+    private void populateIteratorStack(BstNode node) {
+        while (node != null) {
+            stack.push(node);
+            node = node.left;
+        }
+    }
 
     public static class BstNode<T> {
         int key;
@@ -45,8 +80,7 @@ public class BinarySearchTree<T> {
         if (node == null) {
             node = new BstNode<>(key, data);
             size++;
-        }
-         else if (key < node.key) {
+        } else if (key < node.key) {
             node.left = insert(key, data, node.left);
         } else if (key > node.key) {
             node.right = insert(key, data, node.right);
@@ -69,17 +103,17 @@ public class BinarySearchTree<T> {
             node.right = delete(key, node.right);
         } else {
             // leaf
-            if(node.left == null && node.right == null){
+            if (node.left == null && node.right == null) {
                 node = null;
             }
             // one child
-            else if(node.left != null) {
+            else if (node.left != null) {
                 node = node.left;
-            } else if( node.right != null) {
+            } else if (node.right != null) {
                 node = node.right;
             }
             // node has subtree
-            else{
+            else {
                 BstNode<T> rightMin = findMin(node.right);
 
                 node.key = rightMin.key;
@@ -91,13 +125,13 @@ public class BinarySearchTree<T> {
         return node;
     }
 
-    public void printBoundary(){
+    public void printBoundary() {
 
-        if(this.root == null) {
+        if (this.root == null) {
             return;
         }
 
-        System.out.print(this.root.key+" ");
+        System.out.print(this.root.key + " ");
 
         printLeft(this.root.left);
 
@@ -108,26 +142,26 @@ public class BinarySearchTree<T> {
     }
 
     private void printRight(BstNode<T> node) {
-        if(node == null){
+        if (node == null) {
             return;
         }
 
-        if(node.right != null){
+        if (node.right != null) {
             printRight(node.right);
             System.out.print(node.key + " ");
-        } else if(node.left != null){
+        } else if (node.left != null) {
             printRight(node.left);
             System.out.print(node.key + " ");
         }
     }
 
     private void printLeaf(BstNode<T> node) {
-        if(node == null){
+        if (node == null) {
             return;
         }
 
         printLeaf(node.left);
-        if(node.left == null && node.right == null){
+        if (node.left == null && node.right == null) {
             System.out.print(node.key + " ");
         }
         printLeaf(node.right);
@@ -135,57 +169,57 @@ public class BinarySearchTree<T> {
     }
 
     private void printLeft(BstNode<T> node) {
-        if(node == null){
+        if (node == null) {
             return;
         }
 
-        if(node.left != null){
+        if (node.left != null) {
             System.out.print(node.key + " ");
             printLeft(node.left);
-        } else if(node.right != null){
+        } else if (node.right != null) {
             System.out.print(node.key + " ");
             printLeft(node.right);
         }
     }
 
-    public void printInOrder(){
+    public void printInOrder() {
         printInOrder(this.root);
     }
 
     private void printInOrder(BstNode<T> node) {
-        if(node == null){
+        if (node == null) {
             return;
         }
         printPreOrder(node.left);
-        System.out.print(node.key +" ");
+        System.out.print(node.key + " ");
         printPreOrder(node.right);
     }
 
-    public void printPreOrder(){
+    public void printPreOrder() {
         printPreOrder(this.root);
     }
 
     private void printPreOrder(BstNode<T> node) {
-        if(node == null){
+        if (node == null) {
             return;
         }
-        System.out.print(node.key +" ");
+        System.out.print(node.key + " ");
         printPreOrder(node.left);
         printPreOrder(node.right);
     }
 
-    public void printPostOrder(){
+    public void printPostOrder() {
         printPostOrder(this.root);
     }
 
     private void printPostOrder(BstNode<T> node) {
-        if(node == null){
+        if (node == null) {
             return;
         }
 
         printPreOrder(node.left);
         printPreOrder(node.right);
-        System.out.print(node.key +" ");
+        System.out.print(node.key + " ");
     }
 
     private BstNode<T> findMin(BstNode<T> right) {
@@ -194,12 +228,12 @@ public class BinarySearchTree<T> {
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-        bst.insert(3,3);
-        bst.insert(2,2);
-        bst.insert(5,5);
-        bst.insert(1,1);
-        bst.insert(8,8);
-        bst.insert(7,7);
+        bst.insert(3, 3);
+        bst.insert(2, 2);
+        bst.insert(5, 5);
+        bst.insert(1, 1);
+        bst.insert(8, 8);
+        bst.insert(7, 7);
 
         bst.printBoundary();
         System.out.println();

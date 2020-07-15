@@ -3,13 +3,38 @@ package com.cs.datastructure.list.linkedlist;
 public class LinkedList<T> {
 
 
-    private static class Node<T> {
-        T data;
-        Node<T> next;
+    public static class Node<T> {
+        public T data;
+        public Node<T> next;
     }
 
     private Node<T> head;
     private int size = 0;
+
+    public LinkedList(){}
+    public LinkedList(Node<T> head){this.head = head;}
+
+    public Node<T> getHead(){
+        return this.head;
+    }
+
+    public void addCycle(T data){
+        Node<T> node = new Node<>();
+        node.data = data;
+        if (head == null) {
+            head = node;
+        } else {
+            Node<T> curr = head;
+
+            while (curr.next != null) {
+                curr = curr.next;
+            }
+
+            curr.next = node;
+        }
+        node.next = head.next;
+        size++;
+    }
 
     public T getFirst(){
         if(head == null){
