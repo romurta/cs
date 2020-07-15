@@ -5,11 +5,11 @@ import com.cs.datastructure.tree.general.TreeNode;
 import java.util.Iterator;
 import java.util.Stack;
 
-public class GeneneralTreeIterator<T extends TreeNode> implements Iterator<T> {
+public class GeneralTreeIterator<T extends TreeNode> implements Iterator<T> {
 
     Stack<T> stack;
 
-    public GeneneralTreeIterator(T node){
+    public GeneralTreeIterator(T node){
         stack = new Stack<>();
         stack.push(node);
     }

@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GeneneralTreeIteratorTest {
+class GeneralTreeIteratorTest {
 
     @Test
     public void shouldIterateOverOneLevelTree(){

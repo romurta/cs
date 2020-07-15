@@ -1,6 +1,6 @@
 package com.cs.datastructure.tree.general;
 
-import com.cs.datastructure.tree.general.iterator.GeneneralTreeIterator;
+import com.cs.datastructure.tree.general.iterator.GeneralTreeIterator;
 
 import java.util.Iterator;
 
@@ -13,6 +13,6 @@ public class Tree<T extends TreeNode> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new GeneneralTreeIterator<T>((T) root);
+        return new GeneralTreeIterator<T>((T) root);
     }
 }
