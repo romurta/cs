@@ -29,8 +29,7 @@ public class Fibonacci {
         if (x == 1) {
             return 1;
         } else {
-            int f = solutionRec(x - 1) + solutionRec(x - 2);
-            return f;
+            return solutionRec(x - 1) + solutionRec(x - 2);
         }
     }
 }

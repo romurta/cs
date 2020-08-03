@@ -44,6 +44,7 @@ public class BiggerThreeElementMultiplication {
         }
         int result1 = max1 * max2 * max3;
         int result2 = max1 * min1 * min2;
-        return result1 > result2? result1 : result2;
+
+        return Math.max(result1, result2);
     }
 }

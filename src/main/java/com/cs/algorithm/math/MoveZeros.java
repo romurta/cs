@@ -3,7 +3,7 @@ package com.cs.algorithm.math;
 public class MoveZeros {
     public static void main(String[] args) {
 
-        int [] nums = {0,1,0,2,0};
+        int [] nums = {0,1,3,2,0};
         solution(nums);
         for (int i : nums){
             System.out.print(i);
@@ -18,7 +18,6 @@ public class MoveZeros {
                 z++;
                 nums[i]=nums[z];
                 nums[z]=temp;
-
             }
         }
     }

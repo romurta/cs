@@ -19,8 +19,8 @@ public class SameNumberOfOccurrences {
     private static boolean solution(int[] input) {
         Map<Integer, Integer> counts = new HashMap<>();
 
-        for (int i = 0; i < input.length; i++) {
-            counts.put(input[i], counts.getOrDefault(input[i],0)+1);
+        for (int j : input) {
+            counts.put(j, counts.getOrDefault(j, 0) + 1);
         }
 
         Iterator<Integer> iter = counts.values().iterator();

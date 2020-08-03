@@ -39,7 +39,6 @@ public class TrieNode {
                 if(children.get(i) != null) {
                     list.addAll(children.get(i).getWords());
                 }
-
             }
         }
         return list;
