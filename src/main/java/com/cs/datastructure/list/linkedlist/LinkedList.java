@@ -11,14 +11,18 @@ public class LinkedList<T> {
     private Node<T> head;
     private int size = 0;
 
-    public LinkedList(){}
-    public LinkedList(Node<T> head){this.head = head;}
+    public LinkedList() {
+    }
 
-    public Node<T> getHead(){
+    public LinkedList(Node<T> head) {
+        this.head = head;
+    }
+
+    public Node<T> getHead() {
         return this.head;
     }
 
-    public void addCycle(T data){
+    public void addCycle(T data) {
         Node<T> node = new Node<>();
         node.data = data;
         if (head == null) {
@@ -36,8 +40,8 @@ public class LinkedList<T> {
         size++;
     }
 
-    public T getFirst(){
-        if(head == null){
+    public T getFirst() {
+        if (head == null) {
             return null;
         }
         return head.data;

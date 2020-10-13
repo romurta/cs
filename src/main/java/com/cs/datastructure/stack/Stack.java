@@ -1,7 +1,10 @@
 package com.cs.datastructure.stack;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class Stack<T> {
-    private static class Node<T>{
+    private class Node<T>{
         Node<T> prev;
         T data;
     }
@@ -16,7 +19,7 @@ public class Stack<T> {
 
     public void push(T data){
         Node<T> node = new Node<>();
-        node.data = data;
+        node.data =   data;
 
         if(head == null){
             head = node;
@@ -45,5 +48,16 @@ public class Stack<T> {
     }
     public int getSize() {
         return size;
+    }
+
+
+    public static void main(String[] args) {
+        PriorityQueue<String> p = new PriorityQueue<>(2);
+        p.offer("z");
+        p.offer("a");
+        p.offer("b");
+        System.out.println(p.poll());
+
+        System.out.println(p.poll());
     }
 }

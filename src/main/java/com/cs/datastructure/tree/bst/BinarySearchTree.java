@@ -134,10 +134,7 @@ public class BinarySearchTree<T> implements Iterator<T>, Iterable<T> {
         System.out.print(this.root.key + " ");
 
         printLeft(this.root.left);
-
-        printLeaf(this.root.left);
-        printLeaf(this.root.right);
-
+        printLeaf(this.root);
         printRight(this.root.right);
     }
 
@@ -146,13 +143,16 @@ public class BinarySearchTree<T> implements Iterator<T>, Iterable<T> {
             return;
         }
 
+        if(node.left==null && node.right==null){
+            return;
+        }
+
         if (node.right != null) {
             printRight(node.right);
-            System.out.print(node.key + " ");
         } else if (node.left != null) {
             printRight(node.left);
-            System.out.print(node.key + " ");
         }
+        System.out.print(node.key + " ");
     }
 
     private void printLeaf(BstNode<T> node) {
@@ -160,10 +160,12 @@ public class BinarySearchTree<T> implements Iterator<T>, Iterable<T> {
             return;
         }
 
-        printLeaf(node.left);
         if (node.left == null && node.right == null) {
             System.out.print(node.key + " ");
+            return;
         }
+
+        printLeaf(node.left);
         printLeaf(node.right);
 
     }
@@ -173,11 +175,14 @@ public class BinarySearchTree<T> implements Iterator<T>, Iterable<T> {
             return;
         }
 
+        if(node.left==null && node.right==null){
+            return;
+        }
+
+        System.out.print(node.key + " ");
         if (node.left != null) {
-            System.out.print(node.key + " ");
             printLeft(node.left);
         } else if (node.right != null) {
-            System.out.print(node.key + " ");
             printLeft(node.right);
         }
     }
@@ -237,11 +242,11 @@ public class BinarySearchTree<T> implements Iterator<T>, Iterable<T> {
 
         bst.printBoundary();
         System.out.println();
-        bst.printInOrder();
-        System.out.println();
-        bst.printPreOrder();
-        System.out.println();
-        bst.printPostOrder();
+//        bst.printInOrder();
+//        System.out.println();
+//        bst.printPreOrder();
+//        System.out.println();
+//        bst.printPostOrder();
     }
 
 }

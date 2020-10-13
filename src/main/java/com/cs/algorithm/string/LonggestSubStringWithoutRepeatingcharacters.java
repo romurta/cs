@@ -23,20 +23,19 @@ public class LonggestSubStringWithoutRepeatingcharacters {
         int start = 0;
         int end = 0;
 
-        while(end < input.length()){
+        while (end < input.length()) {
 
-            if(map.get(input.charAt(end)) != null){
+            if (map.get(input.charAt(end)) != null) {
                 start = Math.max(input.charAt(end) + 1, start);
             }
 
-            if(output.length() < end - start + 1){
+            if (output.length() < end - start + 1) {
                 output = input.substring(start, end + 1);
             }
 
             map.put(input.charAt(end), end);
             end++;
         }
-
 
         return output;
     }

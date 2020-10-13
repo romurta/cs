@@ -22,6 +22,7 @@ public class Fibonacci {
         return dp[x];
     }
 
+    //O(2^n)
     private static int solutionRec(int x) {
         if (x == 0) {
             return 0;

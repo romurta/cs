@@ -5,7 +5,7 @@ import com.cs.datastructure.list.linkedlist.LinkedList.Node;
 
 /**
  * Separate even and odd numbers returning even numbers first
- *
+ * <p>
  * 0->1->2->3->4->5
  * 0->2->4->1->3->5
  */
@@ -37,20 +37,20 @@ public class EvenOddSeparation {
         Node<Integer> oddTail = null;
         Node<Integer> curr = head;
 
-        while(curr != null){
-            if(isEven(curr.data)) {
-                if(evenHead == null){
+        while (curr != null) {
+            if (isEven(curr.data)) {
+                if (evenHead == null) {
                     evenHead = curr;
                     evenTail = curr;
-                } else{
+                } else {
                     evenTail.next = curr;
                     evenTail = curr;
                 }
             } else {
-                if(oddHead == null){
+                if (oddHead == null) {
                     oddHead = curr;
                     oddTail = curr;
-                } else{
+                } else {
                     oddTail.next = curr;
                     oddTail = curr;
                 }
@@ -60,16 +60,15 @@ public class EvenOddSeparation {
         }
 
 
-
-        if(oddTail != null){
+        if (oddTail != null) {
             oddTail.next = null;
         }
-        if(evenTail != null){
+        if (evenTail != null) {
             evenTail.next = oddHead;
 
         }
 
-        return evenHead != null? evenHead : oddHead;
+        return evenHead != null ? evenHead : oddHead;
     }
 
     private static boolean isEven(Integer data) {

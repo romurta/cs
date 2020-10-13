@@ -7,36 +7,37 @@ public class MinHeap {
     private int size = 0;
 
 
-    public int getSize(){return size;}
+    public int getSize() {
+        return size;
+    }
 
-    public MinHeap(int capacity){
+    public MinHeap(int capacity) {
         this.capacity = capacity;
         heap = new int[this.capacity];
     }
 
-    private int getParentIndex(int index){
-        return (index - 1)/2;
+    private int getParentIndex(int index) {
+        return (index - 1) / 2;
     }
 
-    private int getRightChild(int index){
-        return (index*2)+2;
+    private int getRightChild(int index) {
+        return (index * 2) + 2;
     }
 
-    private int getLeftChild(int index){
-        return (index*2)+1;
+    private int getLeftChild(int index) {
+        return (index * 2) + 1;
     }
 
-    public int extractMin(){
+    public int extractMin() {
         int result = heap[0];
 
         int lastIndex = size - 1;
-        swap(0,lastIndex);
+        swap(0, lastIndex);
 
         heap[lastIndex] = 0;
         size--;
 
         heapfyDown();
-
 
 
         return result;
@@ -45,17 +46,17 @@ public class MinHeap {
     private void heapfyDown() {
         int index = 0;
 
-        while(getLeftChild(index) < size){
+        while (getLeftChild(index) < size) {
 
             int smallestIndex = getLeftChild(index);
 
-            if(getRightChild(index) < size && heap[smallestIndex] > heap[getRightChild(index)]){ // smallest index
+            if (getRightChild(index) < size && heap[smallestIndex] > heap[getRightChild(index)]) { // smallest valueIndex
                 smallestIndex = getRightChild(index);
             }
 
-            if(heap[index] > heap[smallestIndex]){
-                swap(index,smallestIndex);
-            } else{
+            if (heap[index] > heap[smallestIndex]) {
+                swap(index, smallestIndex);
+            } else {
                 break;
             }
 
@@ -64,7 +65,7 @@ public class MinHeap {
         }
     }
 
-    public void add(int data){
+    public void add(int data) {
         heap[size] = data;
         size++;
         heapfyUp();
@@ -73,7 +74,7 @@ public class MinHeap {
     private void heapfyUp() {
         int index = size - 1;
 
-        while(getParentIndex(index) >= 0 && heap[getParentIndex(index)] > heap[index]){
+        while (getParentIndex(index) >= 0 && heap[getParentIndex(index)] > heap[index]) {
             swap(index, getParentIndex(index));
             index = getParentIndex(index);
         }
@@ -81,8 +82,7 @@ public class MinHeap {
     }
 
 
-
-    private void swap(int from, int to){
+    private void swap(int from, int to) {
         int temp = heap[to];
         heap[to] = heap[from];
         heap[from] = temp;

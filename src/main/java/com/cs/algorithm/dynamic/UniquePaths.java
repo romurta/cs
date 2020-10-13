@@ -17,9 +17,9 @@ package com.cs.algorithm.dynamic;
 public class UniquePaths {
     public static void main(String[] args) {
         int[][] board = {
-                {0, 1, 0},
-                {0, 0, 0},
-                {0, 0, 0},
+                {0, 0, 0, 0},
+                {0, 0, 0, 0},
+                {0, 0, 0, 0},
         };
 
         System.out.println(solution(board));

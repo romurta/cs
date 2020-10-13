@@ -17,16 +17,16 @@ public class RemoveAdjacentDuplicates {
     private static String solution(String input) {
         Stack<Character> stack = new Stack<>();
 
-        for (int i = 0; i < input.length() ; i++) {
-            if(stack.isEmpty() || stack.peek() != input.charAt(i) ){
+        for (int i = 0; i < input.length(); i++) {
+            if (stack.isEmpty() || stack.peek() != input.charAt(i)) {
                 stack.push(input.charAt(i));
-            } else if(stack.peek() == input.charAt(i)){
+            } else if (stack.peek() == input.charAt(i)) {
                 stack.pop();
             }
         }
 
         StringBuilder sb = new StringBuilder();
-        while(!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             sb.append(stack.pop());
         }
 

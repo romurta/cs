@@ -28,9 +28,9 @@ public class Cycle {
         LinkedList.Node<Integer> slow = head;
         LinkedList.Node<Integer> fast = head.next;
 
-        while(fast.next != null && fast.next.next != null){
+        while (fast.next != null && fast.next.next != null) {
 
-            if(fast == slow){
+            if (fast == slow) {
                 return true;
             }
 
