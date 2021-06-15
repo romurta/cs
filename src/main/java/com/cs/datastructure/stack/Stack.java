@@ -19,7 +19,7 @@ public class Stack<T> {
 
     public void push(T data){
         Node<T> node = new Node<>();
-        node.data =   data;
+        node.data = data;
 
         if(head == null){
             head = node;
